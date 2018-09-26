@@ -73,7 +73,8 @@ public class Upload {
                 while (i.hasNext()) {
                     FileItem fi = (FileItem) i.next();
                     if (!fi.isFormField()) {
-                        String fieldName = fi.getFieldName();
+                        //String fieldName = fi.getFieldName().s;
+                        //String fileName = fi.getFieldName();
                         //String fileName = fi.getName();
                         String fileName = ".jpg";
                         if (!fileName.isEmpty()) {
