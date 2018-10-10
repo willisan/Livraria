@@ -2,54 +2,58 @@
 <%@include file="../cabecalho.jsp" %>
 <div class="card">
     <div class="card-header">
-        <h5 class="title">Adiciona Autor</h5>
+        <h5 class="title">Adiciona Editora</h5>
     </div>
     <div class="card-body">
         <!--MODIFICAR PARA ADD-->
         <form action="UploadWS" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="urldestino" value="AutorWS">
+            <input type="hidden" name="urldestino" value="EditoraWS">
             <div class="row">
+                <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                        <label>Id</label>
+                        <input type="text" class="form-control" name="txtId" placeholder="Id" value="${obj.id}" readonly="true">
+                    </div>
+                </div>
+            </div>
+                    <div class="row">
                 <div class="col-md-5 pr-md-1">
                     <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" name="txtNome" required class="form-control" placeholder="Nome" >
+                        <input type="text" name="txtNome" required class="form-control" placeholder="Nome" value="${obj.nome}">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-5 pr-md-1">
                     <div class="form-group">
-                        <label>Idade</label>
-                        <input type="number" name="txtIdade" required class="form-control" placeholder="Idade" >
+                        <label>Endereço</label>
+                        <input type="text" name="txtEndereco" required class="form-control" placeholder="Endereço" value="${obj.idade}">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-5 pr-md-1">
                     <div class="form-group">
-                        <label>Cidade</label>
-                        <input type="text" name="txtCidade" required class="form-control" placeholder="Cidade" >
+                        <label>Telefone</label>
+                        <input type="text" name="txtTelefone" required class="form-control" placeholder="Telefone" value="${obj.cidade}">
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="form-group">
                         <label for="file">Foto</label>
-                        <input type="file" name="txtFoto" required class="form-control">
+                        <input type="file" id="file" name="txtFoto" required class="form-control-file" value="./../../arquivos/${obj.endFoto}">
                     </div>
                 </div>
             </div>
-          
-
-
             <button class="btn btn-primary btn-round text-center" type="submit">
                 <i class="tim-icons icon-cloud-upload-94"></i> Salvar
             </button>
-            <a class="btn btn-primary btn-round text-center" href="AutorWS?acao=list">
+            <a class="btn btn-primary btn-round text-center" href="EditoraWS?acao=list">
                 <i class="tim-icons icon-bullet-list-67"></i> Listar
             </a>
         </form>
     </div>
-
     <div class="card-footer">
         <c:if test = "${not empty msg}">
             <div class="alert alert-primary alert-dismissible fade show" role="alert">

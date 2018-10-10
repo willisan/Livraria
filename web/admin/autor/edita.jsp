@@ -2,11 +2,12 @@
 <%@include file="../cabecalho.jsp" %>
 <div class="card">
     <div class="card-header">
-        <h5 class="title">Adiciona Genero</h5>
+        <h5 class="title">Adiciona Autor</h5>
     </div>
     <div class="card-body">
         <!--MODIFICAR PARA ADD-->
-        <form action="GeneroWS" method="POST">
+        <form action="UploadWS" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="urldestino" value="AutorWS">
             <div class="row">
                 <div class="col-md-3 pr-md-1">
                     <div class="form-group">
@@ -48,7 +49,7 @@
             <button class="btn btn-primary btn-round text-center" type="submit">
                 <i class="tim-icons icon-cloud-upload-94"></i> Salvar
             </button>
-            <a class="btn btn-primary btn-round text-center" href="GeneroWS?acao=list">
+            <a class="btn btn-primary btn-round text-center" href="AutorWS?acao=list">
                 <i class="tim-icons icon-bullet-list-67"></i> Listar
             </a>
         </form>

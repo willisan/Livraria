@@ -47,6 +47,12 @@
               <p>Autor</p>
             </a>
           </li>
+          <li>
+            <a href="./../editora/EditoraWS?acao=list">
+              <i class="tim-icons icon-tag"></i>
+              <p>Editora</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

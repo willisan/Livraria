@@ -5,7 +5,7 @@
  */
 package controle;
 
-import dao.AutorDAO;
+import dao.EditoraDAO;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,16 +16,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Autor;
+import modelo.Editora;
 
 /**
  *
  * @author dappo
  */
-@WebServlet(name = "AutorWS", urlPatterns = {"/admin/autor/AutorWS"})
-public class AutorWS extends HttpServlet {
-    private AutorDAO dao;
-    private Autor obj;
+@WebServlet(name = "EditoraWS", urlPatterns = {"/admin/editora/EditoraWS"})
+public class EditoraWS extends HttpServlet {
+    private EditoraDAO dao;
+    private Editora obj;
     private String pagina;
     private String acao;
      
@@ -34,12 +34,12 @@ public class AutorWS extends HttpServlet {
             throws ServletException, IOException {
         
         acao = request.getParameter("acao");
-        List<Autor> lista = null;
+        List<Editora> lista = null;
         String id;
         switch(String.valueOf(acao)){
             case "del":
                 id = request.getParameter("id");
-                dao = new AutorDAO();
+                dao = new EditoraDAO();
                 pagina = "index.jsp";
                 obj = dao.buscarPorChavePrimaria(Long.parseLong(id));
                 Boolean deucerto = dao.excluir(obj);
@@ -54,18 +54,18 @@ public class AutorWS extends HttpServlet {
                 break;
             case "edit":
                 id = request.getParameter("id");
-                dao = new AutorDAO();
-                Autor obj = dao.buscarPorChavePrimaria(Long.parseLong(id));
+                dao = new EditoraDAO();
+                Editora obj = dao.buscarPorChavePrimaria(Long.parseLong(id));
                 request.setAttribute("obj", obj);
                 pagina = "edita.jsp";
                 break;
             default:
-                dao = new AutorDAO();
+                dao = new EditoraDAO();
                 if (request.getParameter("filtro") != null) {
                     try {
                         lista = dao.listar(request.getParameter("filtro"));
                     } catch (Exception ex) {
-                        Logger.getLogger(AutorWS.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(EditoraWS.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
                     lista = dao.listar();
@@ -92,8 +92,8 @@ public class AutorWS extends HttpServlet {
                 msg = "Campos obrigatórios não informados";
             }
             else{
-                dao = new AutorDAO();
-                obj = new Autor();
+                dao = new EditoraDAO();
+                obj = new Editora();
                 //preencho o objeto com o que vem do post
                 
                 Boolean deucerto;
@@ -102,16 +102,17 @@ public class AutorWS extends HttpServlet {
                 if(request.getParameter("txtId")!= null){
                     obj = dao.buscarPorChavePrimaria(Long.parseLong(request.getParameter("txtId")));
                     obj.setNome(request.getParameter("txtNome"));
-                    obj.setIdade(Integer.parseInt(request.getParameter("txtIdade")));
-                    obj.setCidade(request.getParameter("txtCidade"));
+                    obj.setEndereco(request.getParameter("txtEndereco"));
+                    obj.setTelefone(request.getParameter("txtTelefone"));
                     obj.setEndFoto(request.getParameter("txtFoto"));
                     deucerto = dao.alterar(obj);
                     pagina="edita.jsp";
                 }
                 else{
                     obj.setNome(request.getParameter("txtNome"));
-                    obj.setIdade(Integer.parseInt(request.getParameter("txtIdade")));
-                    obj.setCidade(request.getParameter("txtCidade"));
+                    obj.setNome(request.getParameter("txtNome"));
+                    obj.setEndereco(request.getParameter("txtEndereco"));
+                    obj.setTelefone(request.getParameter("txtTelefone"));                
                     obj.setEndFoto(request.getParameter("txtFoto"));
                     deucerto = dao.incluir(obj);
                     pagina="add.jsp";   
