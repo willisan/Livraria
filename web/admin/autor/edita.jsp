@@ -40,9 +40,9 @@
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <div class="form-group">
+                    <div class="form-group-file">
                         <label for="file">Foto</label>
-                        <input type="file" id="file" name="txtFoto" required class="form-control-file" value="./../../arquivos/${obj.endFoto}">
+                        <input type="file" id="file" name="txtFoto" required class="form-control form-control-file" value="./../../arquivos/${obj.endFoto}">
                     </div>
                 </div>
             </div>

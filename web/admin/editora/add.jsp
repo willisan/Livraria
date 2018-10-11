@@ -32,9 +32,9 @@
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <div class="form-group">
+                    <div class="form-group-file">
                         <label for="file">Foto</label>
-                        <input type="file" name="txtFoto" required class="form-control">
+                        <input type="file" name="txtFoto" required class="form-control form-control-file">
                     </div>
                 </div>
             </div>
