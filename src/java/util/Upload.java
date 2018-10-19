@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  *
@@ -73,14 +74,12 @@ public class Upload {
                 while (i.hasNext()) {
                     FileItem fi = (FileItem) i.next();
                     if (!fi.isFormField()) {
-                        //String fieldName = fi.getFieldName().s;
-                        //String fileName = fi.getFieldName();
-                        //String fileName = fi.getName();
-                        String fileName = ".jpg";
+                        String fileName = fi.getName();
+                        String ext = FilenameUtils.getExtension(fileName);
                         if (!fileName.isEmpty()) {
                             boolean isInMemory = fi.isInMemory();
                             long sizeInBytes = fi.getSize();
-                            String name = new Date().getTime() + fileName;
+                            String name = new Date().getTime() +"."+ ext;
 
                             file = new File(filePath + "/" + name);
                             fi.write(file);
