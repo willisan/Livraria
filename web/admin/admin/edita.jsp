@@ -2,12 +2,12 @@
 <%@include file="../cabecalho.jsp" %>
 <div class="card">
     <div class="card-header">
-        <h5 class="title">Altera Autor</h5>
+        <h5 class="title">Adiciona Admin</h5>
     </div>
     <div class="card-body">
         <!--MODIFICAR PARA ADD-->
         <form action="UploadWS" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="urldestino" value="AutorWS">
+            <input type="hidden" name="urldestino" value="AdminWS">
             <div class="row">
                 <div class="col-md-3 pr-md-1">
                     <div class="form-group">
@@ -27,16 +27,16 @@
             <div class="row">
                 <div class="col-md-5 pr-md-1">
                     <div class="form-group">
-                        <label>Idade</label>
-                        <input type="number" name="txtIdade" required class="form-control" placeholder="Idade" value="${obj.idade}">
+                        <label>Email</label>
+                        <input type="text" name="txtEmail" required class="form-control" placeholder="Email" value="${obj.email}">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-5 pr-md-1">
                     <div class="form-group">
-                        <label>Cidade</label>
-                        <input type="text" name="txtCidade" required class="form-control" placeholder="Cidade" value="${obj.cidade}">
+                        <label>Senha</label>
+                        <input type="text" name="txtSenha" required class="form-control" placeholder="Senha" value="${obj.senha}">
                     </div>
                 </div>
                 <div class="col-md-7">
@@ -49,7 +49,7 @@
             <button class="btn btn-primary btn-round text-center" type="submit">
                 <i class="tim-icons icon-cloud-upload-94"></i> Salvar
             </button>
-            <a class="btn btn-primary btn-round text-center" href="AutorWS?acao=list">
+            <a class="btn btn-primary btn-round text-center" href="AdminWS?acao=list">
                 <i class="tim-icons icon-bullet-list-67"></i> Listar
             </a>
         </form>
